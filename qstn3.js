@@ -1,11 +1,18 @@
-let array = Prime([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
- 
-function Prime(array){
-    var primes = [];
-    for(let i = 1; i < array.length; i++){
-        if(array[i] /= 1 || array[i] / 1 == array[i]){
-            primes.push([i]);
+function promptUserForInput(message) { // prompt user for input
+    return prompt(message).split(' ').map(Number);  // chnages an array of string to numbers
+}
+
+const ArrayNumbers = promptUserForInput("Enter Array Numbers: ");
+
+function filterPrimes(arr) { // filter primes
+    return arr.filter(num => {
+        for (let i = 2; i <= Math.sqrt(num); i++) { //loops through the numbers ensuring it is only divided by one and itself
+            if (num % i === 0) return false;
         }
-    }
-    return primes;
-};
+        return num > 1; //returns numbers greater than 1
+    });
+}
+
+const primeNumbers = filterPrimes(ArrayNumbers); // filter primes
+
+window.alert(primeNumbers); // displays the prime numbers
